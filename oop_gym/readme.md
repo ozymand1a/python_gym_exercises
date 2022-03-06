@@ -1,8 +1,8 @@
 # Content
 
-[Classes and Attributes](#classes-and-attributes)
+[01. Classes and Attributes](#classes-and-attributes)
 
-[Attributes (setattr, getattr, delattr, dict)](#attributes-setattr-getattr-delattr-dict)
+[02. Attributes (setattr, getattr, delattr, dict)](#attributes-setattr-getattr-delattr-dict)
 
 .
 
@@ -66,7 +66,7 @@
 
 [comment]: <> ( 23.)
 
-### Classes and attributes
+## Classes and attributes
 
     1. Classes contain methods but not functions.
 
