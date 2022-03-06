@@ -70,7 +70,18 @@ getattr(a, "get_name") # return function
 
 ## 03. `__init__` and `self`
 
-    1. 
+    1. Methods like this "__method_name__" are called "dunder".
+    They are also reserved at 'Python'.
+
+    2. '__init__' is called when you create class instance
+
+```python3
+class User:
+    def __init__(self):
+        print('work!')
+
+a = User() # "work!"
+```
 
 ## 04. Properties (getter, setter, deleter)
 
