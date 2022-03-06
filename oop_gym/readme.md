@@ -6,47 +6,15 @@
 
 [03. `__init__` and `self`](#03-__init__-and-self)
 
- 4. Properties (getter, setter, deleter)
+[04. Properties (getter, setter, deleter)](#04-properties-getter-setter-deleter)
 
- 5. Dunder methods
+[05. Dunder methods](#05-dunder-methods)
 
- 6. `@staticmethod`
+[06. `@staticmethod`](#06-static-methods)
 
- 7. Slots
+[07. Slots](#07-slots)
 
- 8. Dunder method new
-    
-
- 9. `@classmethod`
-
- 10. Encapsulation
-
- 11. Monostate
-
- 12. 
-
- 13. 
-
- 14.
-
- 15.
-
- 16.
-
-
- 17.
-
- 18.
-
- 19.
-
- 20.
-
- 21.
-
- 22.
-
- 23.
+[08. Dunder method 'new'](#08-dunder-methods-new)
 
 ## 01. Classes and attributes
 
@@ -106,6 +74,8 @@ getattr(a, "get_name") # return function
 
 ## 04. Properties (getter, setter, deleter)
 
+## 05. Dunder methods
+
 ## 06. Static methods
 
     1. Allow to call class method (function) without
@@ -129,3 +99,11 @@ class User:
 
 User.get_sum(1, 3) # return 4!
 ```
+
+## 07. Slots
+
+    1. 
+
+## 08. Dunder methods 'new'
+
+    1.
