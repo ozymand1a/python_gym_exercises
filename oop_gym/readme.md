@@ -1,7 +1,8 @@
-# Header
+# Content
 
-[Defines](#defines)
+[Classes and Attributes](#classes-and-attributes)
 
+[Attributes (setattr, getattr, delattr, dict)](#attributes-setattr-getattr-delattr-dict)
 
 .
 
@@ -65,8 +66,7 @@
 
 [comment]: <> ( 23.)
 
-
-# Defines
+### Classes and attributes
 
     1. Classes contain methods but not functions.
 
@@ -92,7 +92,7 @@ print(exm.version) # 3
 ```
 
 
-## 02. Attributes (setattr, getattr, delattr, dict)
+## Attributes (setattr, getattr, delattr, dict)
 
 ```python3
 class User:
