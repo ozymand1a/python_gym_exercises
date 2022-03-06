@@ -1,72 +1,54 @@
 # Content
 
-[01. Classes and Attributes](#classes-and-attributes)
+[01. Classes and Attributes](#01-classes-and-attributes)
 
-[02. Attributes (setattr, getattr, delattr, dict)](#attributes-setattr-getattr-delattr-dict)
+[02. Attributes (setattr, getattr, delattr, dict)](#02-attributes-setattr-getattr-delattr-dict)
 
-.
+[03. `__init__` and `self`](#03-__init__-and-self)
 
-.
+ 4. Properties (getter, setter, deleter)
 
-.
+ 5. Dunder methods
 
-.
+ 6. `@staticmethod`
 
-.
+ 7. Slots
 
-.
-
-.
-
-.
-
-[comment]: <> ( 1. Attributes &#40;setattr, getattr, delattr, dict&#41;)
-
-[comment]: <> ( 3. `__init__` and `self`)
-
-[comment]: <> ( 4. Properties &#40;getter, setter, deleter&#41;)
-
-[comment]: <> ( 5. Dunder methods)
-
-[comment]: <> ( 6. `@staticmethod`)
-
-[comment]: <> ( 7. Slots)
-
-[comment]: <> ( 8. Dunder method new)
+ 8. Dunder method new
     
 
-[comment]: <> ( 9. `@classmethod`)
+ 9. `@classmethod`
 
-[comment]: <> ( 10. Encapsulation)
+ 10. Encapsulation
 
-[comment]: <> ( 11. Monostate)
+ 11. Monostate
 
-[comment]: <> ( 12. )
+ 12. 
 
-[comment]: <> ( 13. )
+ 13. 
 
-[comment]: <> ( 14.)
+ 14.
 
-[comment]: <> ( 15.)
+ 15.
 
-[comment]: <> ( 16.)
+ 16.
 
 
-[comment]: <> ( 17.)
+ 17.
 
-[comment]: <> ( 18.)
+ 18.
 
-[comment]: <> ( 19.)
+ 19.
 
-[comment]: <> ( 20.)
+ 20.
 
-[comment]: <> ( 21.)
+ 21.
 
-[comment]: <> ( 22.)
+ 22.
 
-[comment]: <> ( 23.)
+ 23.
 
-## Classes and attributes
+## 01. Classes and attributes
 
     1. Classes contain methods but not functions.
 
@@ -92,7 +74,7 @@ print(exm.version) # 3
 ```
 
 
-## Attributes (setattr, getattr, delattr, dict)
+## 02. Attributes (setattr, getattr, delattr, dict)
 
 ```python3
 class User:
