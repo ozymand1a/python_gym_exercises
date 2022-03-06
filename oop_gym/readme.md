@@ -1,35 +1,72 @@
-# Content
+# Header
 
- 1. [Classes and instances](#01.classes-and-instances)
- 2. Attributes (setattr, getattr, delattr, dict)
- 3. `__init__` and `self`
- 4. Properties (getter, setter, deleter)
- 5. Dunder methods
- 6. `@staticmethod`
- 7. Slots
- 8. Dunder method new
+[Defines](#defines)
+
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+[comment]: <> ( 1. Attributes &#40;setattr, getattr, delattr, dict&#41;)
+
+[comment]: <> ( 3. `__init__` and `self`)
+
+[comment]: <> ( 4. Properties &#40;getter, setter, deleter&#41;)
+
+[comment]: <> ( 5. Dunder methods)
+
+[comment]: <> ( 6. `@staticmethod`)
+
+[comment]: <> ( 7. Slots)
+
+[comment]: <> ( 8. Dunder method new)
     
 
- 9. `@classmethod`
- 10. Encapsulation
- 11. Monostate
- 12. 
- 13. 
- 14.
- 15.
- 16.
+[comment]: <> ( 9. `@classmethod`)
+
+[comment]: <> ( 10. Encapsulation)
+
+[comment]: <> ( 11. Monostate)
+
+[comment]: <> ( 12. )
+
+[comment]: <> ( 13. )
+
+[comment]: <> ( 14.)
+
+[comment]: <> ( 15.)
+
+[comment]: <> ( 16.)
 
 
- 17.
- 18.
- 19.
- 20.
- 21.
- 22.
- 23.
+[comment]: <> ( 17.)
+
+[comment]: <> ( 18.)
+
+[comment]: <> ( 19.)
+
+[comment]: <> ( 20.)
+
+[comment]: <> ( 21.)
+
+[comment]: <> ( 22.)
+
+[comment]: <> ( 23.)
 
 
-## 01.Classes and instances
+# Defines
 
     1. Classes contain methods but not functions.
 
