@@ -1,6 +1,15 @@
-# 0. How DB is work?
+# Content
 
-# 1. SELECT * FROM DB
+[1. SELECT * FROM DB](#1-select--from-db)
+
+[2. INSERT INTO DB (columns) VALUES (values)](#2-insert-into-db-columns-values-values)
+
+[3. UPDATE DB](#3-update-db)
+
+[4. DELETE FROM DB](#4-delete-from-db)
+
+
+## 1. SELECT * FROM DB
 
 Select target rows at DB
 
@@ -21,7 +30,7 @@ order by name
 limit 12,2
 ```
 
-# 2. INSERT INTO DB (columns) VALUES (values)
+## 2. INSERT INTO DB (columns) VALUES (values)
 
 Insert row/rows at DB.
 
@@ -39,7 +48,7 @@ values
 (10, 'iPhone X', 2, 79900)
 ```
 
-# 3. UPDATE DB
+## 3. UPDATE DB
 
 Update row by some condition or another restriction.
 
@@ -55,7 +64,7 @@ order by price
 limit 5
 ```
 
-# 4. DELETE FROM DB
+## 4. DELETE FROM DB
 
 Delete row/rows from db by condition.
 
