@@ -13,8 +13,10 @@
 
 Select target rows at DB
 
-syntax: \
-`select` row_name `from` table
+syntax:
+```sql
+select row_name from table
+```
 
 additional flags:
 - where "something": select rows with this/these condition/conditions
@@ -23,7 +25,7 @@ additional flags:
 - limit: how many rows should be shown
 
 Example:
-```angular2html
+```sql
 select name, price from products
 where count != 0
 order by name
@@ -34,13 +36,16 @@ limit 12,2
 
 Insert row/rows at DB.
 
-syntax: \
-`insert into` table (col_name_1, col_name_2) \
-`values` \
+syntax: 
+```sql
+insert into table (col_name_1, col_name_2)
+values 
 (val_1, val_2)
+```
+
 
 Example:
-```angular2html
+```sql
 insert into products (id, name, count, price)
 values
 (8, 'iPhone 7', 1, 59990),
@@ -52,12 +57,14 @@ values
 
 Update row by some condition or another restriction.
 
-syntax: \
-`update` table \
-`set` col_name = something
+syntax:
+```sql
+update table
+set col_name = something
+```
 
 Example:
-```angular2html
+```sql
 update products
 set price = price + price * 0.05
 order by price
@@ -68,17 +75,19 @@ limit 5
 
 Delete row/rows from db by condition.
 
-syntax: \
-`delete from` table \
-`where` condition
+syntax:
+```sql
+delete from table
+where condition
+```
 
 Example:
-```angular2html
+```sql
 delete from cars
 where country = 'JP' and (power <= 80 or power >= 130)
 ```
 
 Example of deleting all table:
-```angular2html
+```sql
 truncate table cars
 ```
