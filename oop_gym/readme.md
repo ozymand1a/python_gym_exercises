@@ -16,6 +16,18 @@
 
 [08. Dunder method 'new'](#08-dunder-methods-new)
 
+[09. `@classmethod`](#09-classmethod)
+
+[10. Encapsulation](#10-encapsulation)
+
+[11. Monostate](#11-monostate)
+
+[12. Polymorphism (@singledispatch)](#12-polymorphism-singledispatch)
+
+[13. Dunder methods (`__str__`, `__repr__`, `__len__`, `__del__`)](#13-dunder-methods-__str__-__repr__-__len__-__del__)
+
+[14. Dunder methods (`__bool__`, `__bytes__`, `__float__`, `__int__`)](#14-dunder-methods-__bool__-__bytes__-__float__-__int__)
+
 
 ## 01. Classes and attributes
 
@@ -33,13 +45,15 @@
 class TestClass:
     version = 1
 
-print(TestClass.version) # 1
-exm = TestClass()
-TestClass.version = 2
-print(exm.version) # 2
-exm.version = 3
-TestClass.version = 4
-print(exm.version) # 3
+
+if __name__ == '__main__':
+    print(TestClass.version) # 1
+    exm = TestClass()
+    TestClass.version = 2
+    print(exm.version) # 2
+    exm.version = 3
+    TestClass.version = 4
+    print(exm.version) # 3
 ```
 
 
@@ -53,20 +67,22 @@ class User:
     def get_name(self):
         print(self.name)
         
-print(User.name) # "Test"
-print(getattr(User, "name")) # "Test"
-print(getattr(User, "surname", "null")) # "null"
 
-a = User()
-print(getattr(User, "name")) # "Test"
-setattr(a, "surname", "Test2")
-print(a.surname) # "Test2"
-
-delattr(User, "name")
-print(User.name) # Error
-
-a = User()
-getattr(a, "get_name") # return function
+if __name__ == '__main__':
+    print(User.name) # "Test"
+    print(getattr(User, "name")) # "Test"
+    print(getattr(User, "surname", "null")) # "null"
+    
+    a = User()
+    print(getattr(User, "name")) # "Test"
+    setattr(a, "surname", "Test2")
+    print(a.surname) # "Test2"
+    
+    delattr(User, "name")
+    print(User.name) # Error
+    
+    a = User()
+    getattr(a, "get_name") # return function
 ```
 
 ## 03. `__init__` and `self`
@@ -83,30 +99,50 @@ class User:
     def __init__(self):
         print('work!')
 
-a = User() # "work!"
+
+if __name__ == '__main__':
+    a = User() # "work!"
 ```
 
 ## 04. Properties (`getter`, `setter`, `deleter`)
 
-    1. 
+    1. 'property()' allow to use class methods as calculated property of object
+
+    2. '@property' allow to provide read-only mode for method
+
+    3. 'setter' and 'deleter' are provided auto 'set' and 'del'
 
 ```python3
 class User:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, name="test"):
+        self._name = name
 
-    def get_name(self):
-        return self.name
+    @property
+    def name(self):
+        print("Attribute has returned!")
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        print("Attribute has changed!")
+        self._name = value
     
-    def set_name(self, value):
-        self.name = value
+    @name.deleter
+    def name(self):
+        print("Attribute has deleted!")
+        del self._name
 
 
+if __name__ == '__main__':
+    user = User()
+    user.name = 'test2'  # Attribute has changed!
 ```
 
 ## 05. Dunder methods (`get`, `set`)
 
     1. Allow more comfortable way to use property method
+
+    2. 'get' and 'set' are descriptors
 
 ```python3
 class Data:
@@ -123,11 +159,14 @@ class User:
     name = Data()
     surname = Data()
 
-test = User()
-test.name # ''
-test.name = 111
-test.name # 111
+
+if __name__ == '__main__':
+    test = User()
+    print(test.name)  # ''
+    test.name = 111
+    print(test.name)  # 111
 ```
+
 
 ## 06. Static methods
 
@@ -135,6 +174,8 @@ test.name # 111
     creation of class's instance
     
     2. Using decorator @staticmethod is necessary!
+
+    3. static methods could be call from class and class instances
 
 ```python3
 class User:
@@ -150,16 +191,63 @@ class User:
     def get_sum(x, y):
         return x + y
 
-User.get_sum(1, 3) # return 4!
+
+if __name__ == '__main__':
+    User.get_sum(1, 3) # return 4!
 ```
+
 
 ## 07. Slots
 
-    1. 
+    1. 'slots' restricts the list of attributes that can be overriden
+
+    2. 'slots' are not inhereted at siblings classes
+
+```python3
+class User:
+    __slots__ = ['name', 'age']
+
+    def __init__(self, name="name1", age=20):
+        self.name = name
+        self.age = age
+
+    def get_name(self):
+        print(self.name)
+
+
+if __name__ == '__main__':
+    user = User()
+    user.name = 'name2'
+    user.hh = 1  # Attribute error
+
+```
 
 ## 08. Dunder methods 'new'
 
-    1.
+    1. '__new__' method is called before '__init__'
+
+    2. Allow to create class instance without calling '__init__'
+
+```python3
+class Test:
+    def __new__(cls, *args, **kwargs):
+        print('Class instance is created!')
+        instance = super(Test, cls).__new__(cls)
+        # instance = super().__new__(cls)  # Python 3.9
+        return instance
+
+    def __init__(self, name):
+        print('Attributes initialization!')
+        self.name = name
+
+
+if __name__ == '__main__':
+    t = Test('name')
+    # 'Class instance is created!'
+    # 'Attributes initialization!'
+
+```
+
 
 ## 09. `@classmethod`
 
@@ -182,20 +270,23 @@ class User:
     def set_name(cls, value):
         cls.version = value
 
-a = User()
-b = User()
-c = User()
 
-a.version # 1
-a.version = 2
-b.version # 1
-a.set_name(3)
-a.version # 2
-b.version # 3
-c.version # 3
+if __name__ == '__main__':
+    a = User()
+    b = User()
+    c = User()
+    
+    print(a.version) # 1
+    a.version = 2
+    print(b.version) # 1
+    a.set_name(3)
+    print(a.version) # 2
+    print(b.version) # 3
+    print(c.version) # 3
+
 ```
 
-```python
+```python3
 class User:
     version = 1
 
@@ -206,17 +297,21 @@ class User:
     def set_name(cls, value):
         return cls(value)
 
-a = User.set_name("name2")
-a.name # "name2"
-b = User()
-a.set_name("name3")
-a.name # "name2"
-b = User()
-b.set_name("name33")
-b.name # "name1"
-c = b.set_name("name44")
-c.name # "name44"
+
+if __name__ == '__main__':
+    a = User.set_name("name2")
+    print(a.name) # "name2"
+    b = User()
+    a.set_name("name3")
+    print(a.name) # "name2"
+    b = User()
+    b.set_name("name33")
+    print(b.name) # "name1"
+    c = b.set_name("name44")
+    print(c.name) # "name44"
+
 ```
+
 
 ## 10. Encapsulation
 
@@ -224,23 +319,27 @@ c.name # "name44"
     
     2. Pseudo-encapsulation is provided by self.__atribute_name
 
-```python
+```python3
 class User:
     def __init__(self, name="name1"):
         self.__name = name
 
-a = User()
-a.name # error
-a._name # error
-a.__name # error
-a._User__name # "name1"
-a._User__name = 22
-a._User__name # 22
+
+if __name__ == '__main__':
+    a = User()
+    print(a.name)  # AttributeError
+    print(a._name)  # AttributeError
+    print(a.__name)  # AttributeError
+    print(a._User__name)  # "name1"
+    a._User__name = 22
+    print(a._User__name)  # 22
+
 ```
+
 
 ## 11. Monostate
 
-    1. 
+    1. Changing of class attributes change attributes at all class instances
 
 ```python3
 class User:
@@ -252,14 +351,17 @@ class User:
     def __init__(self):
         self.__dict__ = self.args
 
-a = User()
-b = User()
+        
+if __name__ == '__main__':
+    a = User()
+    b = User()
+    
+    print(a.args)  # {'version': 1, 'flags': 2}
+    a.args['version'] = 2
+    print(a.args) # {'version': 2, 'flags': 2}
+    print(b.args) # {'version': 2, 'flags': 2}
+    print(User.args) # {'version': 2, 'flags': 2}
 
-a.args # {'version': 1, 'flags': 2}
-a.args['version'] = 2
-a.args # {'version': 2, 'flags': 2}
-b.args # {'version': 2, 'flags': 2}
-User.args # {'version': 2, 'flags': 2}
 ```
 
 
@@ -268,7 +370,7 @@ User.args # {'version': 2, 'flags': 2}
     1. At Python polymorphism is the overriding of methods
 
     2. At other programming languages polymorphism provides 
-    different behaviour for methods
+    different behaviour for methods in case of input data types
 
 ```python3
 from functools import singledispatch
@@ -286,8 +388,11 @@ class User:
     def _(value):
         print("str: ", value)
 
-User.get_value([1, 2, 3])  # default: [1, 2, 3]
-User.get_value(True)  # int: True
+        
+if __name__ == '__main__':
+    User.get_value([1, 2, 3])  # default: [1, 2, 3]
+    User.get_value(True)  # int: True
+
 ```
 
 ## 13. Dunder methods (`__str__`, `__repr__`, `__len__`, `__del__`)
@@ -315,15 +420,19 @@ class User:
         return f"<{self.value} object>"
     
     def __del__(self):
-        print("Экземпляр класса был удалён!")
+        print("Class instance is deleted!")
 
-a = User()
-a  # "test object"
-len(a)  # 4
-str(a)  # "test"
-print(a)  # "test"
-del a  # "Экземпляр класса был удалён!"
+
+if __name__ == '__main__':
+    a = User()
+    a  # "test object"
+    len(a)  # 4
+    str(a)  # "test"
+    print(a)  # "test"
+    del a  # "Экземпляр класса был удалён!"
+
 ```
+
 
 ## 14. Dunder methods (`__bool__`, `__bytes__`, `__float__`, `__int__`)
 
@@ -346,14 +455,20 @@ class User:
     def __int__(self):
         return int(self.value)
 
-a = User(1.100)
-bool(a) # True
-bytes(a) # b'1.1'
-float(a) # 1.1
-int(a) # 1
+    
+if __name__ == '__main__':
+    a = User(1.100)
+    bool(a) # True
+    bytes(a) # b'1.1'
+    float(a) # 1.1
+    int(a) # 1
+
 ```
 
 ## 15. Dunder methods (`__pow__`, `__reversed__`, `__truediv__`)
+
+
+## 16.
 
 
 ## 17. Context manager
@@ -432,11 +547,13 @@ class Paladin(Base):
         self.health += 25
         print('health: ', self.health)
 
-wizard = Wizard()
-wizard.go_to() # go_to
-wizard.get_damaged() # 80
-wizard.get_damaged() # 60
-wizard.restore_health() # 90
+
+if __name__ == '__main__':
+    wizard = Wizard()
+    wizard.go_to() # go_to
+    wizard.get_damaged() # 80
+    wizard.get_damaged() # 60
+    wizard.restore_health() # 90
 ```
 
 ## 22. `__isinstance__`, `__issubclass__`, `__getsizeof__`
@@ -487,16 +604,18 @@ class Paladin(Base):
         self.health += 25
         print('health: ', self.health)
 
-issubclass(Paladin, Base) # True
-paladin = Paladin()
-issubclass(paladin, Base) # Error !
-
-import sys
-sys.getsizeof(paladin) # 48
-sys.getsizeof(Paladin) # 1064
-
-isinstance(paladin, Paladin) # True
-isinstance(1, int) # True
+        
+if __name__ == '__main__':
+    issubclass(Paladin, Base) # True
+    paladin = Paladin()
+    issubclass(paladin, Base) # Error !
+    
+    import sys
+    sys.getsizeof(paladin) # 48
+    sys.getsizeof(Paladin) # 1064
+    
+    isinstance(paladin, Paladin) # True
+    isinstance(1, int) # True
 ```
 
 ## 23. Overriding parent's methods
@@ -526,8 +645,75 @@ class Test(User):
     def get_name(self):
         return self.name
 
-a = Test()
-a.get_name() # 'name'
+    
+if __name__ == '__main__':
+    a = Test()
+    a.get_name() # 'name'
 ```
 
-## 25. 
+## 26. Abstract methods
+
+    1. Abstract class is provided only interface. It is useful for preventing bugs
+
+```python3
+from abc import ABCMeta, abstractmethod
+
+class Users(metaclass=ABCMeta):
+    @abstractmethod
+    def go_to(self):
+        pass
+    
+    @abstractmethod
+    def read(self):
+        pass
+    
+class Test(Users):
+    def go_to(self):
+        print("go_to")
+    
+    def read(self):
+        print("read")
+
+a = Users() # Error! Abstract class is provided only interface
+```
+
+## 27. Decorators
+
+    1. Classes may be used as decorators
+
+```python3
+class Counter:
+    def __init__(self, func):
+        self.func = func
+        self.count = 0
+
+    def __call__(self, *args, **kwargs):
+        self.count += 1
+        print("In Counter: ", end="")
+        return self.func(*args, **kwargs)
+    
+    def test(self):
+        print("test")
+
+@Counter
+def printer():
+    print("printer")
+    
+
+if __name__ == '__main__':
+    printer.test()  # "test"
+    printer()  # "In Counter: printer"
+    printer()  # "In Counter: printer"
+    printer()  # "In Counter: printer"
+    printer()  # "In Counter: printer"
+    print(printer.count)  # 4
+
+```
+
+## 28. The dynamic editing of class
+
+    1. 
+
+```python
+
+```
