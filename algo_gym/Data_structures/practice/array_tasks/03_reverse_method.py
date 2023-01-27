@@ -4,7 +4,6 @@ from algo_gym.Data_structures.theory.array import Array
 class ArrayWithReverse(Array):
     def reverse(self):
         start, end = 0, self.length - 1
-        print(end)
 
         while start < end:
             self.data[start], self.data[end] = self.data[end], self.data[start]
@@ -13,7 +12,7 @@ class ArrayWithReverse(Array):
 
 
 if __name__ == '__main__':
-    array = ArrayWithReverse(5)
+    array = ArrayWithReverse(7)
     array.append(6)
     array.append(2)
     array.append(1)
