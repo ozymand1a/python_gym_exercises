@@ -22,9 +22,11 @@
  
 ## 3. Stack problems
 
-- [x] Stack from linked list
-- [x] Advance Stack from linked list
-- [ ] 
+- [x] 1. Stack from linked list
+- [x] 2. Advance Stack from linked list
+- [x] 3. Stack from array
+- [x] 4. Advance Stack from array
+- [x] 5. Doubly Stack from array
 
 ## 4. Queue
 

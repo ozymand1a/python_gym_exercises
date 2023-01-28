@@ -1,4 +1,4 @@
-from algo_gym.Data_structures.practice.stack_tasks.stack_from_linked_list import StackLLBase
+from algo_gym.Data_structures.theory.stack_from_linked_list import StackLLBase
 
 
 class StackLL(StackLLBase):

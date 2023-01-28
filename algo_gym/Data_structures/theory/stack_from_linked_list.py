@@ -27,3 +27,11 @@ class StackLLBase:
             value=value,
             next_node=tail
         )
+
+
+if __name__ == '__main__':
+    stack = StackLLBase()
+    stack.push(12)
+    stack.push(7)
+    stack.push(6)
+    print(stack.pop())

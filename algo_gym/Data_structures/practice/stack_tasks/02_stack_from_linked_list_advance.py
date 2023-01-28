@@ -1,8 +1,8 @@
 from algo_gym.Data_structures.theory.linked_list import Node
-from algo_gym.Data_structures.practice.stack_tasks.stack_from_linked_list import StackLLBase
+from algo_gym.Data_structures.theory.stack_from_linked_list import StackLLBase
 
 
-class StackAdvance(StackLLBase):
+class StackLLAdvance(StackLLBase):
     def __init__(self):
         StackLLBase.__init__(self)
 
@@ -28,7 +28,7 @@ class StackAdvance(StackLLBase):
 
 
 if __name__ == '__main__':
-    stack = StackAdvance()
+    stack = StackLLAdvance()
     stack.push(12)
     stack.push(7)
     stack.push(6)
