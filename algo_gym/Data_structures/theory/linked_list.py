@@ -23,7 +23,7 @@ class List:
         current = self.top.next_node
         prev = self.top
 
-        while current is not Node:
+        while current is not None:
             if current.value == value:
                 prev.next_node = current.next_node
                 return

@@ -13,7 +13,14 @@ class ListDoubly:
         self.top = NodeDoubly()
 
     def append(self, value):
-        pass
+        current = self.top
+
+        while current.next_node is not None:
+            current = current.next_node
+
+        new_node = NodeDoubly(value)
+        current.next_node = new_node
+        new_node.prev_node = current
 
     def __str__(self):
         """
@@ -28,3 +35,12 @@ class ListDoubly:
             current = current.next_node
 
         return values + "]"
+
+
+if __name__ == '__main__':
+    lst = ListDoubly()
+    lst.append(75)
+    lst.append(12)
+    lst.append(28)
+    lst.append(6)
+    print(lst)

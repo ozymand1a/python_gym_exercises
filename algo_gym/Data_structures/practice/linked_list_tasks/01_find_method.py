@@ -5,11 +5,13 @@ class ListWithFind(List):
     def find(self, value):
         current = self.top
 
-        while current is not None:
-            if current == value:
-                return
+        while current.next_node is not None:
+            if current.value == value:
+                return True
 
             current = current.next_node
+
+        return False
 
 
 if __name__ == '__main__':
@@ -19,3 +21,5 @@ if __name__ == '__main__':
     lst.append(7)
     lst.append(12)
     print(lst)
+    print(lst.find(5))
+    print(lst.find(42))
