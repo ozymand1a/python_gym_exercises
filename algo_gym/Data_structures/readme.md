@@ -30,5 +30,6 @@
 
 ## 4. Queue
 
-- [ ] Queue from linked list
-
+- [x] Queue from linked list
+- [x] Advance Queue from linked list
+- [x] Queue from array

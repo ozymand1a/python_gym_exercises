@@ -22,6 +22,9 @@ class ListDoubly:
         current.next_node = new_node
         new_node.prev_node = current
 
+    def __len__(self):
+        pass
+
     def __str__(self):
         """
         Возвращает все элементы связного списка в виде строки.
