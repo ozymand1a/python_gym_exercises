@@ -1,25 +1,24 @@
 def merge_sort(arr):
     temp_arr = [None] * len(arr)
-    do_merge(arr, temp_arr, 0, len(arr) - 1)
+
+    do_mergesort(arr, temp_arr, 0, len(arr) - 1)
 
 
-def do_merge(arr, temp_arr, start, end):
+def do_mergesort(arr, temp_arr, start, end):
 
+    # stop recursion
     if start == end:
         return
 
-    # middle index at array
-    midpoint = (start + end) // 2
+    mid_point = (start + end) // 2
+    do_mergesort(arr, temp_arr, start, mid_point)
+    do_mergesort(arr, temp_arr, mid_point + 1, end)
 
-    do_merge(arr, temp_arr, start, midpoint)
-    do_merge(arr, temp_arr, midpoint + 1, end)
-
-    # merge arrays
     left_index = start
-    right_index = midpoint + 1
+    right_index = mid_point + 1
     temp_arr_index = left_index
-    while left_index <= midpoint and right_index <= end:
-        if arr[left_index] <= arr[right_index]:
+    while (left_index <= mid_point) and (right_index <= end):
+        if arr[left_index] < arr[right_index]:
             temp_arr[temp_arr_index] = arr[left_index]
             left_index += 1
         else:
@@ -27,11 +26,14 @@ def do_merge(arr, temp_arr, start, end):
             right_index += 1
         temp_arr_index += 1
 
-    for i in range(left_index, midpoint + 1):
-        temp_arr[temp_arr_index] = arr[i]
+    while left_index <= mid_point:
+        temp_arr[temp_arr_index] = arr[left_index]
+        left_index += 1
         temp_arr_index += 1
-    for i in range(right_index, end + 1):
-        temp_arr[temp_arr_index] = arr[i]
+
+    while right_index <= end:
+        temp_arr[temp_arr_index] = arr[right_index]
+        right_index += 1
         temp_arr_index += 1
 
     for i in range(start, end + 1):
