@@ -7,5 +7,15 @@
 ## 3. Sorting:
 
 - [ ] Theory
+- [x] Practice
+
+## 4. Search:
+
+- [ ] Theory
+- [ ] Practice
+
+## 5. Numerical Algo:
+
+- [ ] Theory
 - [ ] Practice
 
