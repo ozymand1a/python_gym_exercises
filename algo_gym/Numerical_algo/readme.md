@@ -1,5 +1,5 @@
 ## Numerical problems:
 
-- [ ] 1. Primal test
-- [ ] 2. Calc primorial
-- [ ] 3. Eratosthenes sieve advance
+- [x] 1. Primal test
+- [x] 2. Calc primorial
+- [x] 3. Eratosthenes sieve advance
