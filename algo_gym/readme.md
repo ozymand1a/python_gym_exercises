@@ -3,7 +3,6 @@
 - [x] Theory
 - [x] Practice
 
-
 ## 3. Sorting:
 
 - [ ] Theory
@@ -16,6 +15,6 @@
 
 ## 5. Numerical Algo:
 
-- [ ] Theory
-- [ ] Practice
+- [x] Theory
+- [x] Practice
 
