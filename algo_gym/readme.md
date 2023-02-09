@@ -18,3 +18,12 @@
 - [x] Theory
 - [x] Practice
 
+## 6. Hashing:
+
+- [ ] Theory
+- [ ] Practice
+
+## 7. Recursion:
+
+- [x] Theory
+- [ ] Practice
