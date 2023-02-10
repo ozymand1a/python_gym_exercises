@@ -1,10 +1,12 @@
 def digits_sum(value):
-    if value % 10 == value:
-        return value
+    if not value:
+        return 0
 
-    return int(str(value)[0]) + digits_sum(int(str(value)[1:]))
+    number = value % 10
+    value //= 10
+
+    return number + digits_sum(value)
 
 
 if __name__ == '__main__':
-    res = digits_sum(1531)
-    print(res)
+    print(digits_sum(1532))
