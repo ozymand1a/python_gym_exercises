@@ -26,4 +26,4 @@
 ## 7. Recursion:
 
 - [x] Theory
-- [ ] Practice
+- [x] Practice

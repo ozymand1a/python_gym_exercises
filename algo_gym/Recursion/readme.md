@@ -6,5 +6,5 @@
 - [x] 4. Recursive capitalization calculation
 - [x] 5. Remove open brackets from string
 - [x] 6. Digital root of number
-- [ ] 7. `atoi` function
+- [x] 7. `atoi` function
     
