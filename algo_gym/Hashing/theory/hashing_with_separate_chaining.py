@@ -82,7 +82,7 @@ class HashTableSeparateChaining:
             text += "\n"
         return text
 
-    def change_size(self):
+    def change_size(self, new_size):
         pass
 
 
