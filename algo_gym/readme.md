@@ -21,7 +21,7 @@
 ## 6. Hashing:
 
 - [ ] Theory
-- [ ] Practice
+- [x] Practice
 
 ## 7. Recursion:
 
