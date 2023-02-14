@@ -2,9 +2,15 @@ class DataItem:
     def __init__(self, key, value):
         self.key = key
         self.value = value
+        self.deleted = False
 
     def __str__(self):
         return f"[{self.key:03d}:{self.value}]"
+
+    def delete(self):
+        self.deleted = True
+        self.key = None
+        self.value = None
 
 
 class HashTableOpenAddressing:
@@ -29,7 +35,7 @@ class HashTableOpenAddressing:
 
             if not self.buckets[probe]:
                 return None
-            if self.buckets[probe].key == key:
+            if self.buckets[probe].key == key and not self.buckets[probe].deleted:
                 return self.buckets[probe]
             if num_probes == self.size:
                 return None
@@ -46,7 +52,7 @@ class HashTableOpenAddressing:
         probe = self._hash(key)
 
         while True:
-            if not self.buckets[probe]:
+            if not self.buckets[probe] or self.buckets[probe].deleted:
                 self.buckets[probe] = DataItem(key, value)
                 self.num_elements += 1
                 return
@@ -57,7 +63,10 @@ class HashTableOpenAddressing:
             probe = self._hash(probe + 1)
 
     def delete(self, key):
-        pass
+        item = self.get(key)
+        if item:
+            self.num_elements -= 1
+            item.delete()
 
     def __str__(self):
         """
@@ -67,6 +76,8 @@ class HashTableOpenAddressing:
         for i in range(self.size):
             if self.buckets[i] is None:
                 text += f"{i: 3d}: [--------]\n"
+            elif self.buckets[i].deleted:
+                text += f"{i: 3d}: deleted\n"
             else:
                 text += f"{i: 3d}: {self.buckets[i]}\n"
 
@@ -74,17 +85,16 @@ class HashTableOpenAddressing:
 
 
 if __name__ == '__main__':
-    ht = HashTableOpenAddressing(20)
+    ht = HashTableOpenAddressing(5)
 
-    for key, value in map(lambda x: [int(x[1:4]), x],
-                          ["B617KM39RUS", "B313AB39RUS", "C254HE39RUS", "E123OK39RUS",
-                           "H637EA39RUS", "O129BA39RUS", "T765KP39RUS", "E389BT39RUS",
-                           "B204BA39RUS", "M001EC39RUS", "A973AA39RUS", "C349EP39RUS",
-                           "C166OK39RUS", "H555HH39RUS", "K675KH39RUS", "E746OP39RUS",
-                           "T162BA39RUS", "C130BE39RUS", "B498BE39RUS", "B516MK39RUS"]):
+    for key, value in map(
+            lambda x: [int(x[1:4]), x],
+            ["B617KM39RUS", "B398AB39RUS", "C254HE39RUS", "E123OK39RUS", "H637EA39RUS"]
+    ):
         ht.insert(key, value)
-
     print(ht)
-
-    print(ht.get(617))  # [617:B617KM39RUS]
-    print(ht.get(134))  # None
+    ht.delete(617)
+    ht.delete(637)
+    print(ht)
+    ht.insert(557, "H557OP39RUS")
+    print(ht)
