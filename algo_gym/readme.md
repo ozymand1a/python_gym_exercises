@@ -10,7 +10,7 @@
 
 ## 4. Search:
 
-- [ ] Theory
+- [x] Theory
 - [ ] Practice
 
 ## 5. Numerical Algo:
@@ -20,7 +20,7 @@
 
 ## 6. Hashing:
 
-- [ ] Theory
+- [x] Theory
 - [x] Practice
 
 ## 7. Recursion:
