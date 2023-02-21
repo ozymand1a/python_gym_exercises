@@ -11,7 +11,7 @@
 ## 4. Search:
 
 - [x] Theory
-- [ ] Practice
+- [x] Practice
 
 ## 5. Numerical Algo:
 
